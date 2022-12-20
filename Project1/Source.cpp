@@ -124,6 +124,7 @@ public:
 	
 };
 
+
 int main()
 {
 	int windowWidth = 1700;
@@ -141,9 +142,19 @@ int main()
 			sf::Vector2f(0, 0), sf::Vector2f(10, 10), sf::Color(sf::Color::Blue)));
 	}
 	sf::Clock clock;
+	int frame = 0;
+	int fpsAv = 0;
 	while (window.isOpen())
 	{
 		sf::Time dt = clock.restart();
+		float dtSeconds = dt.asSeconds();
+		int fps = 1 / dtSeconds;
+		if (frame % 10 == 0)
+		{
+			fpsAv = fps;
+			window.setTitle("Boids! FPS: " + std::to_string(fpsAv));
+		}
+		
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -158,6 +169,9 @@ int main()
 			boids[i].draw(window);
 		}
 		window.display();
+		frame++;
+		
+		
 	}
 
 	return 0;
