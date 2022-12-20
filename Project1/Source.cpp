@@ -126,18 +126,18 @@ public:
 
 int main()
 {
-	int windowWidth = 1000;
+	int windowWidth = 1700;
 	int windowHeight = 1000;
 	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Boids!");
 	window.setFramerateLimit(60);
 	
-	int numBoids = 100;
+	int numBoids = 5000;
 	std::vector<Boid> boids;
 	int speed = 100 ; 
 	
 	for (int i = 0; i < numBoids; i++)
 	{
-		boids.push_back(Boid(sf::Vector2f(rand() % windowWidth, rand() % windowHeight), sf::Vector2f( rand()% speed, rand() % speed),
+		boids.push_back(Boid(sf::Vector2f(rand() % windowWidth, rand() % windowHeight), sf::Vector2f(rand() % speed, rand() % speed),
 			sf::Vector2f(0, 0), sf::Vector2f(10, 10), sf::Color(sf::Color::Blue)));
 	}
 	sf::Clock clock;
